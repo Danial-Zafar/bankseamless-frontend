@@ -1,0 +1,7 @@
+<div [formGroup]="parent">
+    <label for="iban" class="sr-only">IBAN</label>
+    <input id="iban" type="text" formControlName="iban" iban [ibanLength]="ibanLength" required class="rounded-t-md input" placeholder="Enter the destination IBAN">
+    <ng-template [ngIf]="displayFlag">
+      <span class="flag-icon" [ngClass]="displayFlag ? 'flag-'+countryCode: ''"></span><span class="text-gray-200" *ngIf="displayInvalidIban">INVALID IBAN</span>
+    </ng-template>
+</div>

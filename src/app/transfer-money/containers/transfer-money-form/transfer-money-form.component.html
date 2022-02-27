@@ -1,0 +1,36 @@
+<div class="p-12 px-6 py-10 sm:px-10 sm:py-6 bg-white rounded-lg shadow-md lg:shadow-lg">
+  <form [formGroup]="transferMoneyForm" (ngSubmit)="onSubmit()">
+    <!-- <pre>{{ transferMoneyForm.value | json }}</pre> -->
+    <div class="rounded-md shadow-sm -space-y-px">
+      <p class="self-end">Balance {{balance | number}}</p>
+      <!-- <div>
+        <label for="iban" class="sr-only">IBAN</label>
+        <input id="iban" type="text" formControlName="iban" iban required class="rounded-t-md input" placeholder="Enter the destination IBAN">
+      </div> -->
+      <iban iban [ibanLength]="ibanLength" [parent]="transferMoneyForm" [displayFlag]="displayFlag" [displayInvalidIban]="displayInvalidIban" [countryCode]="countryCode"> <!-- #myIban="iban" -->
+      </iban>
+
+      <div>
+        <!-- <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Username</label> -->
+          <div class="flex">
+            <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+              {{currencyCode}}
+            </span>
+            <input type="number" id="website-admin" formControlName="amount" class="rounded-b-md input">
+          </div>
+        <!-- <label for="amount" class="sr-only">Amount</label>
+        <input id="amount" type="number" formControlName="amount" required class="rounded-b-md input"> -->
+      </div>
+
+    </div>
+
+    <div class="transfer-money__button">
+      <button class="rounded-full bg-blue-600">
+        Cancel
+      </button>
+      <button type="submit" [disabled]="transferMoneyForm.invalid" class="ml-6 rounded-full bg-blue-600">
+        Transfer
+      </button>
+    </div>
+  </form>
+</div>
